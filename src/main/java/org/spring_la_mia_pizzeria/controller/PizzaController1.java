@@ -7,12 +7,11 @@ import org.spring_la_mia_pizzeria.model.Pizza;
 import org.spring_la_mia_pizzeria.repository.PizzaRepository;
 import org.spring_la_mia_pizzeria.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
-import org.springframework.boot.actuate.web.exchanges.HttpExchange.Response;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

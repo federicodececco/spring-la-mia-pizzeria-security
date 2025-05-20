@@ -2,7 +2,6 @@ package org.spring_la_mia_pizzeria.model;
 
 import java.time.LocalTime;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;

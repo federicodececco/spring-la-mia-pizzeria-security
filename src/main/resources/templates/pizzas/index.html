@@ -1,5 +1,6 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 <head>
   <title>Pizza</title>
@@ -10,10 +11,11 @@
 <body>
   <div th:replace="~{fragments/navbar :: navbar}"></div>
   <main class="container">
-    <div class="mb-3 d-flex">
-      <a th:href="@{/create}" class="me-auto btn btn-primary btn-sm" href="">
+    <div class="mb-3 d-flex" sec:authorize="hasAuthority('ADMIN')">
+      <a th:href="@{/create}" class="me-auto btn btn-primary btn-sm">
         Aggiungi una pizza
       </a>
+      <h3 th:text="'hello '+${username}"></h3>
     </div>
     <div class="container">
       <form th:action="@{/search}" method="get">
@@ -21,6 +23,7 @@
         <button type="submit">Search</button>
       </form>
       <h1>Pizze</h1>
+      Roles: <span sec:authentication="principal.authorities"></span>
       <table th:if="${pizzas.size>0}" class="table">
         <thead>
           <tr>
@@ -40,7 +43,7 @@
               </form>
               <!-- <a th:href="@{/{id}(id=${pizza.id})/order}">Ordina</a> -->
             </td>
-            <td>
+            <td sec:authorize="hasAuthority('ADMIN')">
               <form th:action="@{/edit/{id}(id=${pizza.id})}" method="get">
                 <button type="submit" class="btn btn-warning btn-sm">Modifica </button>
               </form>

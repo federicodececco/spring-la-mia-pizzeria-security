@@ -28,13 +28,16 @@ public class Role {
     @JsonBackReference
     private Set<User> users;
 
-    public Integer getId() {
-        return id;
+    public Role() {
     }
 
     public Role(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setId(Integer id) {

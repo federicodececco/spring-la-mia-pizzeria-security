@@ -20,7 +20,7 @@ public class DatabaseUserDetails implements UserDetails {
 
     public DatabaseUserDetails(User user) {
         this.id = user.getId();
-        this.username = user.getPassword();
+        this.username = user.getUsername();
         this.password = user.getPassword();
         this.authorities = new HashSet<GrantedAuthority>();
         for (Role role : user.getRoles()) {
@@ -40,7 +40,7 @@ public class DatabaseUserDetails implements UserDetails {
         return password;
     }
 
-    public Set<GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.authorities;
     }
 

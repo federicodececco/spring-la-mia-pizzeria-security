@@ -3,11 +3,9 @@ package org.spring_la_mia_pizzeria.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.spring_la_mia_pizzeria.model.Ingredient;
-import org.spring_la_mia_pizzeria.model.Order;
 import org.spring_la_mia_pizzeria.model.Pizza;
 import org.spring_la_mia_pizzeria.model.SpecialOffer;
-import org.spring_la_mia_pizzeria.repository.OrderRepository;
+
 import org.spring_la_mia_pizzeria.repository.PizzaRepository;
 import org.spring_la_mia_pizzeria.repository.SpecialOfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +16,7 @@ public class PizzaService {
 
     @Autowired
     private PizzaRepository pizzaRepository;
-    @Autowired
-    private OrderRepository orderRepository;
+
     @Autowired
     private SpecialOfferRepository offerRepository;
 

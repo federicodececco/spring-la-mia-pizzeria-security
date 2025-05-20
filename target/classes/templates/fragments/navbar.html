@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <th:block th:fragment="head">
@@ -15,7 +15,12 @@
     <nav th:fragment="navbar">
         <nav class="container"><a th:href="@{/}" th:text="indice" />
             <a th:href="@{/ingredients/}" th:text="ingredienti" />
+            <div>Logged user: <span sec:authentication="name"></span>
+                Roles <span sec:authentication="principal.authorities"></span>
+                <a href="/logout">Sign out</a>
+            </div>
         </nav>
+
     </nav>
 
 

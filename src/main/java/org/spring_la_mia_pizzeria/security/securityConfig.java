@@ -17,10 +17,12 @@ public class securityConfig {
     @Bean
     @SuppressWarnings("removal")
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().requestMatchers("/create", "/edit/**").hasAuthority("ADMIN")
+        http.authorizeHttpRequests()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico").permitAll()
+                .requestMatchers("/error").permitAll()
                 .requestMatchers(HttpMethod.POST, "/**").hasAuthority("ADMIN")
-                .requestMatchers("/ingredients", "/ingredients/**").hasAuthority("ADMIN")
-                .requestMatchers("/**").permitAll()
+                .requestMatchers("/{id}", "/").hasAnyAuthority("ADMIN", "USER")
+                .requestMatchers("/ingredients**", "/ingredients").hasAuthority("ADMIN")
                 .and().formLogin()
                 .and().logout()
                 .and().exceptionHandling();
@@ -33,7 +35,7 @@ public class securityConfig {
     DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
-        authProvider.setUserDetailsService(null);
+        authProvider.setUserDetailsService(userDetailService());
 
         authProvider.setPasswordEncoder(passwordEncoder());
 
